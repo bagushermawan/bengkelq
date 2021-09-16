@@ -50,7 +50,12 @@
                       </label>
                       @endforeach
                   </div> --}}
-                    <select name="role_id" class="roles" class="form-control">
+                    {{-- <select name="role_id" class="roles" class="form-control">
+                    </select> --}}
+                     <select class="form-control select2">
+                      @foreach ($role as $r)
+                          <option value="{{$r->id}}">{{$r->nama}}</option>
+                      @endforeach
                     </select>
                 </div>
                         <div class="card-footer text-right">
@@ -66,23 +71,26 @@
 
     @push('page-script')
     <script type="text/javascript">
-      $('.roles').select2({
-        placeholder: 'Select Role',
-        ajax: {
-          url: "{{route('role.ajaxsearch')}}",
-          dataType: 'json',
-          processResults: function (data) {
-            return {
-              results:  $.map(data, function (item) {
-                return {
-                  text: item.nama,
-                  id: item.id
-                }
-              })
-            };
-          },
-          cache: true
-        }
-      });
+      $(function(){
+        $('.select2').select2();
+      })
+      // $('.roles').select2({
+      //   placeholder: 'Select Role',
+      //   ajax: {
+      //     url: "{{route('role.ajaxsearch')}}",
+      //     dataType: 'json',
+      //     processResults: function (data) {
+      //       return {
+      //         results:  $.map(data, function (item) {
+      //           return {
+      //             text: item.nama,
+      //             id: item.id
+      //           }
+      //         })
+      //       };
+      //     },
+      //     cache: true
+      //   }
+      // });
     </script>
     @endpush
