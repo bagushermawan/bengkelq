@@ -50,7 +50,7 @@
                       </label>
                       @endforeach
                   </div> --}}
-                    <select name="role_id" class="roles" class="form-control">
+                    <select class="form-control roles">
                     </select>
                 </div>
                         <div class="card-footer text-right">
@@ -66,6 +66,7 @@
 
     @push('page-script')
     <script type="text/javascript">
+    $(function(){
       $('.roles').select2({
         placeholder: 'Select Role',
         ajax: {
@@ -84,5 +85,6 @@
           cache: true
         }
       });
+    })
     </script>
     @endpush
