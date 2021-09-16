@@ -22,9 +22,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('user.create', [
-        	'role' => $role,
-        ]);
+        return view('user.create');
     }
 
     
